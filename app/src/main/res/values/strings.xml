@@ -18,4 +18,6 @@
     <string name="zamknij">Zamknij</string>
     <string name="strona_g_wna">Strona Główna</string>
     <string name="niezalogowano">Niezalogowano</string>
+    <string name="toolbar_icon">Toolbar icon</string>
+    <string name="user_icon">User Icon</string>
 </resources>
