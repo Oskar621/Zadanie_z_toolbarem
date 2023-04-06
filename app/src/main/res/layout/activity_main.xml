@@ -134,8 +134,8 @@
 
 
     <LinearLayout
-        android:layout_width="254dp"
-        android:layout_height="248dp"
+        android:layout_width="250dp"
+        android:layout_height="270dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -177,6 +177,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Zaloguj" />
+
+        <Button
+            android:id="@+id/ButtonLogOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:text="Wyloguj sie" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
