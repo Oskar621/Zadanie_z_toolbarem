@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/navView"
         android:background="#90EE90"
         android:layout_width="250dp"
         android:layout_height="match_parent"

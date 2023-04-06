@@ -1,6 +1,7 @@
 package com.example.zadanie_z_toolbarem
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             val view = binding.root
             setContentView(view)
 
-            val userInfo: MutableList<String> = mutableListOf("","","")
+            val userInfo: Array<String> = arrayOf("","","")
 
             //expend navView
             binding.toolbarIcon.setOnClickListener {
@@ -71,10 +72,28 @@ class MainActivity : AppCompatActivity() {
 
                 Toast.makeText(applicationContext, "Pomyślnie zalogowano", Toast.LENGTH_SHORT).show()
             }
+
+            binding.ButtonHomepage.setOnClickListener {
+                Toast.makeText(this, "Jesteś już na stronie głównej", Toast.LENGTH_SHORT).show()
+            }
+            binding.ButtonGrades.setOnClickListener {
+                if (ifLogged){
+                    startActivity(Intent(this, GradesTable::class.java).putExtra("userinfo", userInfo))
+                } else
+                    Toast.makeText(this, "Najpierw zaloguj się!", Toast.LENGTH_SHORT).show()
+            }
+
+            binding.ButtonUserInfo.setOnClickListener {
+                if (ifLogged){
+                    startActivity(Intent(this, UserInformations::class.java).putExtra("userinfo", userInfo))
+                } else
+                    Toast.makeText(this, "Najpierw zaloguj się!", Toast.LENGTH_SHORT).show()
+
+            }
     }
 
     @SuppressLint("SetTextI18n")
-    fun refreshUserData(userInfo: MutableList<String>){
+    fun refreshUserData(userInfo: Array<String>){
         binding.navUsername.text = userInfo[0]
         binding.toolbarText.text = "${userInfo[1]} ${userInfo[2]}"
     }

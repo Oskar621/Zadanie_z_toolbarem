@@ -1,21 +1,17 @@
 package com.example.zadanie_z_toolbarem
+
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.widget.TextView
 
-class GradesTable : Fragment() {
-
+class GradesTable : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.grades_table)
 
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_user_informations, container, false)
+        supportActionBar?.hide() // ukrycie defaultowego topbara
+        val UserData = intent.getStringArrayExtra("userinfo")
+        findViewById<TextView>(R.id.toolbarText).text = "${User_Data?.get(1)} ${User_Data?.get(2)}"
+        findViewById<TextView>(R.id.navUsername).text = User_Data?.get(0)
     }
 }
