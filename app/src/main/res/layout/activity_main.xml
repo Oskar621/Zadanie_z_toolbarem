@@ -59,7 +59,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/TextViewUsername"
+                        android:id="@+id/navUsername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -120,20 +120,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/toolbarIcon"
-        android:layout_width="66dp"
-        android:layout_height="51dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/menu_icon" />
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:backgroundTint="#4CAF50"
+        android:gravity="center_vertical"
+        tools:ignore="MissingConstraints">
 
+        <ImageView
+            android:id="@+id/toolbarIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/menu_icon" />
+
+        <TextView
+            android:id="@+id/toolbarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="21dp"
+            android:fontFamily="sans-serif"
+            android:text="Niezalogowano"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="250dp"
         android:layout_height="270dp"
         android:orientation="vertical"
@@ -178,14 +197,29 @@
             android:layout_marginTop="20dp"
             android:text="Zaloguj" />
 
-        <Button
-            android:id="@+id/ButtonLogOut"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:visibility="gone"
-            android:text="Wyloguj sie" />
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/LoggedIn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Zalogowano!"
+        android:gravity="center_horizontal|center_vertical"
+        android:visibility="gone"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/ButtonLogOut"
+        android:layout_width="246dp"
+        android:layout_height="52dp"
+        android:text="Wyloguj sie"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/LoggedIn"
+        app:layout_constraintHorizontal_bias="0.406"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.764" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

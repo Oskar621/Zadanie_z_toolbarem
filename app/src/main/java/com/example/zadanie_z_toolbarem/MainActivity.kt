@@ -1,5 +1,6 @@
 package com.example.zadanie_z_toolbarem
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             val view = binding.root
             setContentView(view)
 
-            var userInfo: MutableList<String> = mutableListOf("","","")
+            val userInfo: MutableList<String> = mutableListOf("","","")
 
             //expend navView
             binding.toolbarIcon.setOnClickListener {
@@ -32,6 +33,17 @@ class MainActivity : AppCompatActivity() {
                 binding.navView.visibility = View.GONE
             }
 
+            binding.ButtonLogOut.setOnClickListener {
+                ifLogged = false
+                userInfo[0] = "Nieznany"
+                userInfo[1] = ""
+                userInfo[2] = "Niezalogowano"
+
+                refreshUserData(userInfo)
+                binding.linearLayout.visibility = View.VISIBLE
+                binding.LoggedIn.visibility = View.GONE
+                binding.ButtonLogOut.visibility = View.GONE
+            }
             //button to log in actions
             binding.ButtonLogin.setOnClickListener {
 
@@ -48,12 +60,23 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 ifLogged = true
-                binding.ButtonLogOut.visibility = View.VISIBLE
                 userInfo[0] = nickname
                 userInfo[1] = login
                 userInfo[2] = password
 
+                binding.linearLayout.visibility = View.GONE
+                binding.LoggedIn.visibility = View.VISIBLE
+                binding.ButtonLogOut.visibility = View.VISIBLE
+                refreshUserData(userInfo)
+
                 Toast.makeText(applicationContext, "Pomyślnie zalogowano", Toast.LENGTH_SHORT).show()
             }
     }
+
+    @SuppressLint("SetTextI18n")
+    fun refreshUserData(userInfo: MutableList<String>){
+        binding.navUsername.text = userInfo[0]
+        binding.toolbarText.text = "${userInfo[1]} ${userInfo[2]}"
+    }
+
 }
