@@ -11,7 +11,7 @@ class GradesTable : AppCompatActivity() {
 
         supportActionBar?.hide() // ukrycie defaultowego topbara
         val UserData = intent.getStringArrayExtra("userinfo")
-        findViewById<TextView>(R.id.toolbarText).text = "${User_Data?.get(1)} ${User_Data?.get(2)}"
-        findViewById<TextView>(R.id.navUsername).text = User_Data?.get(0)
+        findViewById<TextView>(R.id.toolbarText).text = "${UserData?.get(1)} ${UserData?.get(2)}"
+        findViewById<TextView>(R.id.navUsername).text = UserData?.get(0)
     }
 }
