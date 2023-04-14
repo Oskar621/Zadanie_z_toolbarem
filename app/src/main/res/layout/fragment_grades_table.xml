@@ -7,24 +7,123 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".GradesTable">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:background="#90EE90"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="175dp"
+                android:layout_height="65dp"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginEnd="10dp"
+                    app:cardCornerRadius="50dp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/ImageViewUser"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/user_icon" />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="sans-serif"
+                        android:text="Witaj"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/navUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="sans-serif"
+                        android:text="Nieznany"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/ButtonHomepage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:backgroundTint="#ADD8E6"
-            android:gravity="center_vertical"/>
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="200dp"
+            android:text="Strona Główna" />
+
+        <Button
+            android:id="@+id/ButtonGrades"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="270dp"
+            android:text="Tabela Ocen" />
+
+        <Button
+            android:id="@+id/ButtonUserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="340dp"
+            android:text="Informacje" />
+
+        <Button
+            android:id="@+id/ButtonClose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="Zamknij" />
+
+
+    </com.google.android.material.navigation.NavigationView>
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        android:backgroundTint="#ADD8E6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
-        android:id="@+id/relativeLayout2"
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="58dp"
-        android:backgroundTint="#ADD8E6"
+        android:backgroundTint="#4CAF50"
         android:gravity="center_vertical"
         tools:ignore="MissingConstraints">
 
@@ -33,7 +132,6 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerVertical="true"
-            android:contentDescription="@string/toolbar_icon"
             android:src="@drawable/menu_icon" />
 
         <TextView
@@ -43,116 +141,14 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="17dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="21dp"
             android:fontFamily="sans-serif"
-            android:text="@string/niezalogowano"
+            android:text="Niezalogowano"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            tools:ignore="RelativeOverlap" />
+            android:textSize="20sp" />
     </RelativeLayout>
-
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="#90EE90"
-            tools:ignore="MissingConstraints"
-            android:animateLayoutChanges="true"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="vertical"
-                android:gravity="center_horizontal|center_vertical">
-
-                <LinearLayout
-                    android:layout_width="175dp"
-                    android:layout_height="65dp"
-                    android:orientation="horizontal"
-                    tools:ignore="UselessParent">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        app:cardCornerRadius="50dp"
-                        app:cardElevation="0dp"
-                        android:layout_marginEnd="10dp">
-
-                        <ImageView
-                            android:id="@+id/user_icon"
-                            android:layout_width="65dp"
-                            android:layout_height="65dp"
-                            android:src="@drawable/user_icon"
-                            android:layout_gravity="center_vertical"
-                            android:contentDescription="@string/user_icon" />
-                    </androidx.cardview.widget.CardView>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="sans-serif"
-                            android:text="@string/witaj"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/navUsername"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:fontFamily="sans-serif"
-                            android:text="@string/nieznany"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/Button_nav_homepage"
-                android:text="@string/strona_g_wna"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:layout_marginHorizontal="10dp"/>
-
-            <Button
-                android:id="@+id/Button_nav_marks"
-                android:text="@string/tabela_ocen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="150dp"
-                android:layout_marginHorizontal="10dp"/>
-
-            <Button
-                android:id="@+id/Button_nav_user_info"
-                android:text="@string/informacje"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="200dp"
-                android:layout_marginHorizontal="10dp"/>
-
-            <Button
-                android:id="@+id/Button_nav_close"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="20dp"
-                android:text="@string/zamknij" />
-
-        </com.google.android.material.navigation.NavigationView>
 
     <TableLayout
         android:layout_width="236dp"

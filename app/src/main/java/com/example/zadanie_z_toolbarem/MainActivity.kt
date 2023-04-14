@@ -2,15 +2,16 @@ package com.example.zadanie_z_toolbarem
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.zadanie_z_toolbarem.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
         private lateinit var binding: ActivityMainBinding
 
+        @SuppressLint("SetTextI18n")
         override fun onCreate(savedInstanceState: Bundle?) {
 
             //boolean to check if user is logged
@@ -22,7 +23,18 @@ class MainActivity : AppCompatActivity() {
             val view = binding.root
             setContentView(view)
 
-            val userInfo: Array<String> = arrayOf("","","")
+            var userData = arrayOf("","","")
+            val data = intent.getStringArrayExtra("userData")
+
+            if (data != null){
+                ifLogged = true
+                userData = data
+                binding.linearLayout.visibility = View.GONE
+                binding.LoggedIn.visibility = View.VISIBLE
+                binding.ButtonLogOut.visibility = View.VISIBLE
+                refreshUserData(userData)
+            }
+
 
             //expend navView
             binding.toolbarIcon.setOnClickListener {
@@ -36,11 +48,10 @@ class MainActivity : AppCompatActivity() {
 
             binding.ButtonLogOut.setOnClickListener {
                 ifLogged = false
-                userInfo[0] = "Nieznany"
-                userInfo[1] = ""
-                userInfo[2] = "Niezalogowano"
-
-                refreshUserData(userInfo)
+                userData.set(0, "Nieznany")
+                userData.set(1, "")
+                userData.set(2,"Niezalogowano")
+                refreshUserData(userData)
                 binding.linearLayout.visibility = View.VISIBLE
                 binding.LoggedIn.visibility = View.GONE
                 binding.ButtonLogOut.visibility = View.GONE
@@ -61,14 +72,14 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 ifLogged = true
-                userInfo[0] = nickname
-                userInfo[1] = login
-                userInfo[2] = password
+                userData[0] = nickname
+                userData[1] = login
+                userData[2] = password
 
                 binding.linearLayout.visibility = View.GONE
                 binding.LoggedIn.visibility = View.VISIBLE
                 binding.ButtonLogOut.visibility = View.VISIBLE
-                refreshUserData(userInfo)
+                refreshUserData(userData)
 
                 Toast.makeText(applicationContext, "Pomyślnie zalogowano", Toast.LENGTH_SHORT).show()
             }
@@ -78,14 +89,14 @@ class MainActivity : AppCompatActivity() {
             }
             binding.ButtonGrades.setOnClickListener {
                 if (ifLogged){
-                    startActivity(Intent(this, GradesTable::class.java).putExtra("userinfo", userInfo))
+                    startActivity(Intent(this, GradesTable::class.java).putExtra("userData", userData))
                 } else
                     Toast.makeText(this, "Najpierw zaloguj się!", Toast.LENGTH_SHORT).show()
             }
 
             binding.ButtonUserInfo.setOnClickListener {
                 if (ifLogged){
-                    startActivity(Intent(this, UserInformations::class.java).putExtra("userinfo", userInfo))
+                    startActivity(Intent(this, UserInformations::class.java).putExtra("userData", userData))
                 } else
                     Toast.makeText(this, "Najpierw zaloguj się!", Toast.LENGTH_SHORT).show()
 
@@ -93,9 +104,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun refreshUserData(userInfo: Array<String>){
-        binding.navUsername.text = userInfo[0]
-        binding.toolbarText.text = "${userInfo[1]} ${userInfo[2]}"
+    fun refreshUserData(userData: Array<String>){
+        binding.navUsername.text = userData[0]
+        binding.toolbarText.text = "${userData[1]} ${userData[2]}"
     }
 
 }
